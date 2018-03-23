@@ -33,7 +33,7 @@ tower_of_hanoi()
 		#Move n-1 disks from source to auxilliary
 		tower_of_hanoi "$(($1-1))" $source $auxilliary $target
 		
-		echo Moved $n disk from $source to $target
+		echo Moved $1 disk from $source to $target
 	        swaps_done=$(($swaps_done + 1))	
 		
 		#Move n-1 disks back from auxilliary to target 
