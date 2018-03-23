@@ -1,14 +1,8 @@
+
+{Note: the code is interactive, it does take the number of disks from command line, one can input it later.}
+
 Command to run the script:
- > bash tower_of_hanoi.sh
-    Number of disks to move: 3
-    Moved 1 disk from 1 to 3
-    Moved 2 disk from 2 to 1
-    Moved 1 disk from 3 to 2
-    Moved 3 disk from 1 to 3
-    Moved 1 disk from 2 to 1
-    Moved 2 disk from 3 to 2
-    Moved 1 disk from 1 to 3
-    It took 7 moves to solve Towers for 3 disks.
+> bash tower_of_hanoi.sh
 
 Command to sign and encrpyt the script
  > gpg --sign --encrypt tower_of_hanoi.sh
