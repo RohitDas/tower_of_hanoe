@@ -5,12 +5,7 @@
 	1. https://en.wikibooks.org/wiki/Bash_Shell_Scripting
 	2. https://en.wikipedia.org/wiki/Tower_of_Hanoi
 	3. https://futureboy.us/pgp.html
-comment1
 
-echo -n 'Number of disks to move: '
-read n
-
-<<comment2  
 	Providing a recursive implementation of the tower of Hanoi
 	Idea here is to break the solution into smaller problems.
 	However, although recursive solution is elegant but for larget number 
@@ -19,29 +14,45 @@ read n
 	I would say that did a bash script after a long time, as originally, I 
 	was attempting to consider source, auxillary and target as stacks, 
 	however, it was prooving to be complex.
-comment2
 
-swaps_done=0
+	The disk are numbered from 1 to n
+	where if i < j then j is bigger than j
 
+	There 3 slots, source, auxilliary, target.
+comment1
+
+#Function spec
 tower_of_hanoi()
 { 
-	source=$2
-	auxilliary=$3
-	target=$4
 	if [ $1 -gt 0 ];
 	then
 		#Move n-1 disks from source to auxilliary
-		tower_of_hanoi "$(($1-1))" $source $auxilliary $target
+		tower_of_hanoi "$(($1-1))" $2 $4 $3
 		
-		echo Moved $1 disk from $source to $target
+		#Moves nth disk from source to target
+		echo Moved $1-th disk $2-slot to $3-slot
 	        swaps_done=$(($swaps_done + 1))	
 		
 		#Move n-1 disks back from auxilliary to target 
-		tower_of_hanoi "$(($1-1))" $auxilliary $target $source
+		tower_of_hanoi "$(($1-1))" $4 $2 $3
 	fi
 
 }
 
-tower_of_hanoi $n 1 2 3
-echo "It took $swaps_done moves to solve Towers for $n disks."
+swaps_done=0
+echo -n 'Enter num disks: '
+read n
 
+#Loops until you enter a valid non-null input. Will need to add check for a valid integer.
+while [[ -z "$n" ]]
+do
+	echo -n 'Enter valid num disks: '
+	read n
+done
+
+if [ $n -lt 0 ]; then
+	echo "Illegal value provided for disks, should be greater than 0"
+else
+	tower_of_hanoi $n 1 2 3
+	echo "It took $swaps_done moves to solve Towers for $n disks."
+fi
