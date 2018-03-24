@@ -5,12 +5,18 @@ Command to run the script:
 > bash tower_of_hanoi.sh
 
 Command to sign and encrpyt the script
- > gpg --sign --encrypt tower_of_hanoi.sh
+ > gpg --encrypt --sign --armor -r dashohoxha@gmail.com tower_of_hanoi.sh
  
 Command to export the public key
- > gpg --armor --export rohitangsudas91@gmail.com
+ > gpg --send-keys --keyserver pgp.mit.edu rohitangsudas91@gmail.com
 
-Command to send key to keyserver
- > gpg  --send-keys 29413BB1815AAEABE3FDEE283A1C32295059930A
+Note: One would find 2 keys, I used the RSA 4096 size of key.
+
+Finding Dashamir's key
+ > gpg --keyserver https://pgp.mit.edu --recv Dashamir
+
+Found for keys, used 847FC5C4337D9CDBD473B7A60967FD258D6414F9 (rsa4096)
+
+
 
  
